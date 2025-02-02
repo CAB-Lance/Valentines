@@ -52,7 +52,7 @@ const ValentineCard = () => {
           <div className="text-center space-y-4">
             <h1 className="text-3xl font-bold text-red-600">Yay! 💖</h1>
             <p className="text-xl text-gray-700">
-              I knew you'd say yes! See you on the 14th! 🌹
+              I knew you&apos;d say yes! See you on the 14th! 🌹
             </p>
           </div>
 
@@ -87,10 +87,10 @@ const ValentineCard = () => {
     if (noClickCount === 0) return null;
 
     const sadCatMessages = [
-      { message: "Please don't say no... 🥺", image: Cat1 },
-      { message: "But I made you a Valentine's card... 😿", image: Cat2 },
+      { message: "Please don&apos;t say no... 🥺", image: Cat1 },
+      { message: "But I made you a Valentine&apos;s card... 😿", image: Cat2 },
       { message: "Maybe we can talk about it? 🐱", image: Cat3 },
-      { message: "I promise I'm nice! 😿", image: Cat4 },
+      { message: "I promise I&apos;m nice! 😿", image: Cat4 },
       { message: "Last chance to say yes! 🐱💕", image: Cat5 },
     ];
 
@@ -148,7 +148,8 @@ const ValentineCard = () => {
 
         {moveCount >= 5 && noClickCount === 0 && (
           <p className="text-center text-gray-600 mt-4 animate-bounce">
-            Okay, you caught me! I'm giving you one last chance to answer? 🥺
+            Okay, you caught me! I&apos;m giving you one last chance to answer?
+            🥺
           </p>
         )}
 
