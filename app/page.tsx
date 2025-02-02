@@ -1,101 +1,161 @@
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
+import Cat1 from "./assets/cat1.jpg";
+import Cat2 from "./assets/cat2.jpg";
+import Cat3 from "./assets/cat3.jpg";
+import Cat4 from "./assets/cat4.jpg";
+import Cat5 from "./assets/cat5.jpg";
+import Cat6 from "./assets/cat6.jpg";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+const ValentineCard = () => {
+  const [noButtonPosition, setNoButtonPosition] = useState({ x: 0, y: 0 });
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [moveCount, setMoveCount] = useState(0);
+  const [noClickCount, setNoClickCount] = useState(0);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  const moveButton = () => {
+    // Generate random position between -150 and 150 for both x and y
+    const newX = (Math.random() - 0.5) * 300;
+    const newY = (Math.random() - 0.5) * 300;
+
+    // Keep button within bounds
+    const boundedX = Math.min(Math.max(newX, -150), 150);
+    const boundedY = Math.min(Math.max(newY, -150), 150);
+
+    setNoButtonPosition({ x: boundedX, y: boundedY });
+  };
+
+  const handleYesClick = () => {
+    setShowSuccess(true);
+  };
+
+  const handleNoClick = () => {
+    if (moveCount < 5) {
+      moveButton();
+      const newMoveCount = moveCount + 1;
+      setMoveCount(newMoveCount);
+
+      // Reset to center after third click
+      if (newMoveCount === 5) {
+        setNoButtonPosition({ x: 0, y: 0 });
+      }
+    } else {
+      setNoClickCount((prev) => prev + 1);
+    }
+  };
+
+  if (showSuccess) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen bg-pink-50 p-8">
+        <div className="max-w-lg w-full bg-white rounded-xl shadow-lg p-8 space-y-6">
+          <div className="text-center space-y-4">
+            <h1 className="text-3xl font-bold text-red-600">Yay! 💖</h1>
+            <p className="text-xl text-gray-700">
+              I knew you'd say yes! See you on the 14th! 🌹
+            </p>
+          </div>
+
+          <div className="relative mt-6">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src={Cat6}
+              alt="Yayyyyy"
+              className="rounded-lg mx-auto shadow-lg object-cover"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <p className="absolute bottom-3 left-0 right-0 text-white text-xl font-medium text-center">
+              *happy purring noises* 😺💕
+            </p>
+          </div>
+
+          <div className="flex justify-center gap-2 mt-4">
+            {"❤️💖💝".split("").map((heart, i) => (
+              <span
+                key={i}
+                className="animate-bounce"
+                style={{ animationDelay: `${i * 200}ms` }}
+              >
+                💖
+              </span>
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+      </div>
+    );
+  }
+
+  const renderSadCat = () => {
+    if (noClickCount === 0) return null;
+
+    const sadCatMessages = [
+      { message: "Please don't say no... 🥺", image: Cat1 },
+      { message: "But I made you a Valentine's card... 😿", image: Cat2 },
+      { message: "Maybe we can talk about it? 🐱", image: Cat3 },
+      { message: "I promise I'm nice! 😿", image: Cat4 },
+      { message: "Last chance to say yes! 🐱💕", image: Cat5 },
+    ];
+
+    return (
+      <div className="mt-6 text-center">
+        <div className="relative">
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src={sadCatMessages[noClickCount - 1].image}
+            alt="Sad but cute cat"
+            className="rounded-lg mx-auto shadow-lg object-cover w-full"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <p className="absolute bottom-3 left-0 right-0 text-white text-lg font-medium">
+            {sadCatMessages[noClickCount - 1].message}
+          </p>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-pink-50 p-8">
+      <div className="max-w-lg w-full bg-white rounded-xl shadow-lg p-8 space-y-8">
+        <div className="text-center space-y-4">
+          <h1 className="text-3xl font-bold text-red-600">
+            Will you be my Valentine?
+          </h1>
+          <p className="text-gray-600">
+            I promise to make you smile every day! 🌹
+          </p>
+        </div>
+
+        <div className="flex justify-center gap-4 pt-4 relative">
+          <button
+            onClick={handleYesClick}
+            className="px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 
+                     transition-colors duration-200 font-semibold shadow-md hover:shadow-lg"
+          >
+            Yes! 💝
+          </button>
+
+          {noClickCount < 5 && (
+            <button
+              onClick={handleNoClick}
+              style={{
+                transform: `translate(${noButtonPosition.x}px, ${noButtonPosition.y}px)`,
+                transition: "transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
+              }}
+              className="px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 
+                       transition-colors duration-200 font-semibold shadow-md hover:shadow-lg"
+            >
+              No 💔
+            </button>
+          )}
+        </div>
+
+        {moveCount >= 5 && noClickCount === 0 && (
+          <p className="text-center text-gray-600 mt-4 animate-bounce">
+            Okay, you caught me! I'm giving you one last chance to answer? 🥺
+          </p>
+        )}
+
+        {renderSadCat()}
+      </div>
     </div>
   );
-}
+};
+
+export default ValentineCard;
