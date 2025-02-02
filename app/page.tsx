@@ -87,11 +87,11 @@ const ValentineCard = () => {
     if (noClickCount === 0) return null;
 
     const sadCatMessages = [
-      { message: "Please don&apos;t say no... 🥺", image: Cat1 },
-      { message: "But I made you a Valentine&apos;s card... 😿", image: Cat2 },
-      { message: "Maybe we can talk about it? 🐱", image: Cat3 },
-      { message: "I promise I&apos;m nice! 😿", image: Cat4 },
-      { message: "Last chance to say yes! 🐱💕", image: Cat5 },
+      { message: `Please don&apos;t say no... 🥺`, image: Cat1 },
+      { message: `But I made you a Valentine&apos;s card... 😿`, image: Cat2 },
+      { message: `Maybe we can talk about it? 🐱`, image: Cat3 },
+      { message: `I promise I&apos;m nice! 😿`, image: Cat4 },
+      { message: `Last chance to say yes! 🐱💕`, image: Cat5 },
     ];
 
     return (
