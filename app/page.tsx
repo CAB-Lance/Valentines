@@ -129,7 +129,7 @@ const ValentineCard = () => {
         )}
         {isLetterVisible && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md z-50 p-6">
-            <div className="relative w-[380px] md:w-[420px] lg:w-[460px] p-6 bg-[#FAF3E0] border-4 border-[#D4A373] shadow-2xl rounded-lg transform transition-all scale-95 opacity-0 animate-popUp">
+            <div className="relative w-[380px] md:w-[420px] lg:w-[460px] p-6 bg-[#FAF3E0] border-4 border-[#D4A373] shadow-2xl rounded-lg transform transition-all scale-95 opacity-0 animate-popUp max-h-[90vh] overflow-y-auto">
               <h2 className="text-2xl font-bold text-red-500 mb-4">Happy Valentines Day, my Bebe!</h2>
               <p className="text-gray-700 text-justify">
                 Hello my baby, I just want to thank you for accepting my invitation. 🤪 I can’t express how happy I am that you’ve agreed to be Dino’s Valentine this year. <br></br><br></br>
