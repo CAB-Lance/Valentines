@@ -168,7 +168,7 @@ const ValentineCard = () => {
           <Image
             src={sadCatMessages[noClickCount - 1].image}
             alt="Sad but cute cat"
-            className="mx-auto object-cover rounded-lg w-full w-28"
+            className="mx-auto object-cover rounded-lg w-full w-24"
           />
           <p className=" left-0 right-0 text-gray-600 font-medium mt-3">
             {sadCatMessages[noClickCount - 1].message}
@@ -187,7 +187,7 @@ const ValentineCard = () => {
             <Image
               src={currentImage}
               alt="Sad but cute cat"
-              className="mx-auto object-cover w-full w-28"
+              className="mx-auto object-cover w-full w-24"
             />
           </div>
         )}
