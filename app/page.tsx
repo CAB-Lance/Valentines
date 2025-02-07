@@ -1,8 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Cat4 from "./assets/cat4.jpg";
-import Cat5 from "./assets/cat5.jpg";
 import happyDino from "./assets/dino.jpg";
 import angryDino from "./assets/angrydino.jpg";
 import cry from "./assets/cry1.gif";
@@ -11,7 +9,6 @@ import Cry3 from "./assets/cry3.gif";
 import Flutter from "./assets/flutter.gif";
 import Dinoo from "./assets/dinooo.png";
 import FingerHeart from "./assets/hearrt.jpg";
-import Kiss from "./assets/kiss.gif";
 import Swal from 'sweetalert2';
 import MochaArrow from './assets/mocha-arrow.gif';
 
@@ -192,7 +189,7 @@ const ValentineCard = () => {
           </div>
         )}
           <h1 className="text-3xl font-bold text-red-600">
-            Will you be your Dino's valentine? 🥹🩷
+            Will you be your Dino&apos;s valentine? 🥹🩷
           </h1>
           <p className="text-gray-600">
             I promise to make you smile every day! 🌹
